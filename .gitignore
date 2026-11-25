@@ -1,0 +1,21 @@
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+
+# Dependencias
+node_modules/
+
+# Archivos de compilacion
+dist/
+build/
+
+# Cobertura de tests
+coverage/
+
+# Archivos de registro
+*.log
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
