@@ -1,3 +1,4 @@
+
 export interface ItemCarrito {
   precio: number;
   cantidad: number;
@@ -12,7 +13,13 @@ export function calcularTotal(items: ItemCarrito[]): number {
       throw new Error("Cantidad inválida");
     }
 
-    total += item.precio * item.cantidad * (1 - (item.descuento ?? 0));
+    const descuento = item.descuento ?? 0;
+
+    if (!Number.isFinite(descuento) || descuento < 0 || descuento > 1) {
+      throw new Error("Descuento inválido");
+    }
+
+    total += item.precio * item.cantidad * (1 - descuento);
   }
 
   return Math.round((total + Number.EPSILON) * 100) / 100;
